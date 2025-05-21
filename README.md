@@ -7,33 +7,56 @@ A REST API for managing and querying product information with filtering and sort
 - Filter products by price range
 - Sort products by price in ascending order
 - Swagger/OpenAPI documentation
-- Input validation
-- Error handling
+- Comprehensive input validation
+- Global error handling
+- Unit test coverage
 
 ## Technical Stack
 
-- Java 8+
-- Spring Boot
+- Java 17
+- Spring Boot 3.2.5
 - Lombok
 - SpringDoc OpenAPI (Swagger)
+- JUnit 5 & Mockito for testing
+
+## Project Structure
+
+```
+src/
+├── main/java/com/productapi/
+│   ├── controller/    # REST endpoints
+│   ├── service/       # Business logic
+│   ├── repository/    # Data access
+│   ├── model/         # Domain entities
+│   ├── constant/      # Constants and messages
+│   └── exception/     # Error handling
+└── test/java/com/productapi/
+    ├── controller/    # Controller tests
+    ├── service/       # Service tests
+    └── exception/     # Exception handler tests
+```
 
 ## API Endpoints
 
 ### Filter Products by Price Range
-- **Endpoint**: `GET /filter/price/{initial_range}/{final_range}`
+- **Endpoint**: `GET /api/products/filter/price/{initial_range}/{final_range}`
 - **Description**: Returns products within the specified price range
+- **Validation**:
+  - Price ranges must be non-negative
+  - Initial range must be less than or equal to final range
+  - Both ranges are required
 - **Response Codes**:
   - `200`: Success
   - `400`: Invalid price range parameters
 
 ### Sort Products by Price
-- **Endpoint**: `GET /sort/price`
+- **Endpoint**: `GET /api/products/sort/price`
 - **Description**: Returns product names sorted by price in ascending order
 - **Response Code**: `200`: Success
 
 ## Running the Project
 
-1. Ensure you have Java 8+ and Maven installed
+1. Ensure you have Java 17 and Maven installed
 2. Clone the repository
 3. Run the application:
    ```bash
@@ -48,14 +71,24 @@ A REST API for managing and querying product information with filtering and sort
 3. **Stream API**: Used for efficient filtering and sorting operations
 4. **Swagger/OpenAPI**: Added for better API documentation and testing
 5. **In-memory Repository**: Used for simplicity, can be easily replaced with a database implementation
+6. **Validation**: Bean validation annotations for input validation
+7. **Error Handling**: Global exception handler for consistent error responses
 
 ## Testing
 
-The project includes test cases for:
-- Price range filtering
-- Price-based sorting
-- Input validation
-- Error handling
+The project includes comprehensive test coverage:
+
+### Unit Tests
+- **Controller Tests**:
+  - Price range filtering
+  - Input validation
+  - Error scenarios
+- **Service Tests**:
+  - Filtering logic
+  - Sorting logic
+- **Exception Handler Tests**:
+  - Error response formatting
+  - Exception type handling
 
 Run tests using:
 ```bash

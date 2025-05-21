@@ -1,5 +1,6 @@
-package com.productapi;
+package com.productapi.exception;
 
+import com.productapi.constant.ErrorMessages;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -15,6 +16,7 @@ public class GlobalExceptionHandler {
 
     /**
      * Handles IllegalArgumentException by returning a 400 Bad Request response.
+     * This is used for validation errors in the controller.
      *
      * @param e The exception containing the error message
      * @return ResponseEntity with BAD_REQUEST status and error message
@@ -37,19 +39,6 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleMethodArgumentTypeMismatch(MethodArgumentTypeMismatchException e) {
         return ResponseEntity
             .status(HttpStatus.BAD_REQUEST)
-            .body("Invalid parameter type: " + e.getMessage());
-    }
-
-    /**
-     * Handles all other exceptions by returning a 500 Internal Server Error response.
-     *
-     * @param e The unexpected exception
-     * @return ResponseEntity with INTERNAL_SERVER_ERROR status and error message
-     */
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleGenericException(Exception e) {
-        return ResponseEntity
-            .status(HttpStatus.INTERNAL_SERVER_ERROR)
-            .body("An unexpected error occurred: " + e.getMessage());
+            .body(String.format(ErrorMessages.INVALID_PARAMETER_TYPE, e.getMessage()));
     }
 } 

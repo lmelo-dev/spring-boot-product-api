@@ -1,5 +1,7 @@
-package com.productapi;
+package com.productapi.service;
 
+import com.productapi.model.Product;
+import com.productapi.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,12 +24,8 @@ public class ProductService {
      * @param initialRange The minimum price (inclusive)
      * @param finalRange The maximum price (inclusive)
      * @return List of products within the specified price range
-     * @throws IllegalArgumentException if price ranges are negative
      */
     public List<Product> filterByPrice(int initialRange, int finalRange) {
-        if (initialRange < 0 || finalRange < 0) {
-            throw new IllegalArgumentException("Price ranges cannot be negative");
-        }
         return repository.getAllProducts().stream()
                 .filter(product -> product.getPrice() >= initialRange && product.getPrice() <= finalRange)
                 .collect(Collectors.toList());

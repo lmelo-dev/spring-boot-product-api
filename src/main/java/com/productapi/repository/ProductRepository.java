@@ -1,5 +1,6 @@
-package com.productapi;
+package com.productapi.repository;
 
+import com.productapi.model.Product;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
