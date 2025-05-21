@@ -19,23 +19,6 @@ A REST API for managing and querying product information with filtering and sort
 - SpringDoc OpenAPI (Swagger)
 - JUnit 5 & Mockito for testing
 
-## Project Structure
-
-```
-src/
-├── main/java/com/productapi/
-│   ├── controller/    # REST endpoints
-│   ├── service/       # Business logic
-│   ├── repository/    # Data access
-│   ├── model/         # Domain entities
-│   ├── constant/      # Constants and messages
-│   └── exception/     # Error handling
-└── test/java/com/productapi/
-    ├── controller/    # Controller tests
-    ├── service/       # Service tests
-    └── exception/     # Exception handler tests
-```
-
 ## API Endpoints
 
 ### Filter Products by Price Range
