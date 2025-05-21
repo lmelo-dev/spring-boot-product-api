@@ -1,4 +1,4 @@
-package com.lucasmelo.productapi;
+package com.productapi;
 
 import org.springframework.stereotype.Service;
 import java.util.List;

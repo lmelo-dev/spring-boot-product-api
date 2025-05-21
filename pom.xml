@@ -8,7 +8,7 @@
 		<version>3.2.5</version>
 		<relativePath/>
 	</parent>
-	<groupId>com.lucasmelo</groupId>
+	<groupId>com.productapi</groupId>
 	<artifactId>product-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Product API</name>

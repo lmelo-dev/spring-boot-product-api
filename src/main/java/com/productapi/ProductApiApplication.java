@@ -1,4 +1,4 @@
-package com.lucasmelo.productapi;
+package com.productapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
